@@ -22,7 +22,7 @@
       'startTimerOnClick'    : true,      // true or false - true requires clicking the first button start the timer
       'startOffset'          : 0,         // the index of the tooltip you want to start on (index of the li)
       'nextButton'           : true,      // true or false to control whether a next button is used
-      'prev_button'          : true,      // true or false to control whether a prev button is used
+      'prevButton'          : true,      // true or false to control whether a prev button is used
       'tipAnimation'         : 'fade',    // 'pop' or 'fade' in each tip
       'pauseAfter'           : [],        // array of indexes where to pause the tour after
       'tipAnimationFadeSpeed': 300,       // when tipAnimation = 'fade' this is speed in milliseconds for the transition
@@ -41,14 +41,14 @@
       'preStepCallback'      : $.noop,    // A method to call before each step
       'postStepCallback'     : $.noop,    // A method to call after each step
       'template' : { // HTML segments for tip layout
-        'link'    : '<a href="#close" class="joyride-close-tip">X</a>',
-        'timer'   : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
-        'tip'     : '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
-        'wrapper' : '<div class="joyride-content-wrapper" role="dialog"></div>',
-        'button'  : '<a href="#" class="joyride-next-tip"></a>',
-        'prev_button': '<a href="#" class="small button joyride-prev-tip"></a>',
-        'modal'   : '<div class="joyride-modal-bg"></div>',
-        'expose'  : '<div class="joyride-expose-wrapper"></div>',
+        'link'       : '<a href="#close" class="joyride-close-tip">X</a>',
+        'timer'      : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
+        'tip'        : '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
+        'wrapper'    : '<div class="joyride-content-wrapper" role="dialog"></div>',
+        'button'     : '<a href="#" class="joyride-next-tip"></a>',
+        'prevButton' : '<a href="#" class="small button joyride-prev-tip"></a>',
+        'modal'      : '<div class="joyride-modal-bg"></div>',
+        'expose'     : '<div class="joyride-expose-wrapper"></div>',
         'exposeCover': '<div class="joyride-expose-cover"></div>'
       }
     },
@@ -239,7 +239,7 @@
       },
 
       prev_button_text : function (txt, idx) {
-        if (settings.prev_button) {
+        if (settings.prevButton) {
           txt = $.trim(txt) || 'Previous';
 
           // Don't show the button if it's the first element
@@ -247,7 +247,7 @@
               txt = '';
           }
           else
-              txt = $(settings.template.prev_button).append(txt)[0].outerHTML;
+              txt = $(settings.template.prevButton).append(txt)[0].outerHTML;
         } else {
             txt = '';
         }
